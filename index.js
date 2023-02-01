@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 require("dotenv").config()
 
-
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
@@ -71,7 +71,7 @@ app.post("/signin",async(req,res)=>{
 })
 
 
-app.listen(8080,async () => {
+app.listen(PORT,async () => {
     try{
         await connection
         console.log("Connection to DB successfully")
@@ -80,7 +80,7 @@ app.listen(8080,async () => {
         console.log("Error connecting to DB");
         console.log(err);
     }
-    console.log("Listening on PORT 8080")
+    console.log(`Listening on PORT ${PORT}`)
 })
 
 
