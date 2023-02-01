@@ -54,8 +54,6 @@ app.post("/signin",async(req,res)=>{
     const user = await UserModel.findOne({email})
     const hashed_password = user.password;
     const user_id = user._id;
-    console.log(user)
-    console.log(user_id)
     bcrypt.compare(password,hashed_password,function(err,result){
         if(err){
             res.send({"msg":"Invalid Credentials"})
@@ -77,8 +75,7 @@ app.listen(PORT,async () => {
         console.log("Connection to DB successfully")
     }
     catch(err){
-        console.log("Error connecting to DB");
-        console.log(err);
+        console.log("Error connecting to DB")
     }
     console.log(`Listening on PORT ${PORT}`)
 })
